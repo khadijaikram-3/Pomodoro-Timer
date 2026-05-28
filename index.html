@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Pomodoro Timer - Focus & Break</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- LEFT SIDE -->
+        <div class="left-side">
+            <h1 class="title">🍅 POMODORO<br>TIMER</h1>
+            
+            <!-- Beautiful Circle Timer -->
+            <div class="circle-timer">
+                <svg class="circle-progress" width="280" height="280" viewBox="0 0 280 280">
+                    <circle class="circle-bg" cx="140" cy="140" r="125" fill="none" stroke="#f0f0f0" stroke-width="8"/>
+                    <circle class="circle-fill" id="circleFill" cx="140" cy="140" r="125" fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-dasharray="785" stroke-dashoffset="0" transform="rotate(-90 140 140)"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FF8E53;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="timer-text">
+                    <div class="timer-large" id="timerDisplay">25:00</div>
+                    <div class="timer-label" id="modeLabel">FOCUS TIME</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="right-side">
+            <div class="session-card">
+                <h2>📊 SESSION CONTROL</h2>
+                
+                <!-- Time Settings -->
+                <div class="time-settings">
+                    <div class="setting-box">
+                        <label>🎯 FOCUS</label>
+                        <div class="time-control">
+                            <button class="time-minus" data-target="focus">-</button>
+                            <span id="focusValue">25</span>
+                            <button class="time-plus" data-target="focus">+</button>
+                        </div>
+                        <span class="unit">minutes</span>
+                    </div>
+                    <div class="setting-box">
+                        <label>☕ BREAK</label>
+                        <div class="time-control">
+                            <button class="time-minus" data-target="break">-</button>
+                            <span id="breakValue">5</span>
+                            <button class="time-plus" data-target="break">+</button>
+                        </div>
+                        <span class="unit">minutes</span>
+                    </div>
+                </div>
+
+                <!-- Beautiful Buttons -->
+                <div class="button-group">
+                    <button class="btn btn-start" id="startBtn">
+                        <span>▶</span> START
+                    </button>
+                    <button class="btn btn-pause" id="pauseBtn">
+                        <span>⏸</span> PAUSE
+                    </button>
+                    <button class="btn btn-resume" id="resumeBtn">
+                        <span>▶▶</span> RESUME
+                    </button>
+                    <button class="btn btn-reset" id="resetBtn">
+                        <span>⟳</span> RESET
+                    </button>
+                </div>
+
+                <!-- Session Stats -->
+                <div class="session-stats">
+                    <div class="stat-card">
+                        <div class="stat-label">Today's Focus</div>
+                        <div class="stat-value" id="todayCount">0</div>
+                        <div class="stat-unit">sessions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Total Focus Time</div>
+                        <div class="stat-value" id="totalTime">0</div>
+                        <div class="stat-unit">minutes</div>
+                    </div>
+                </div>
+
+                <!-- History List -->
+                <div class="history-section">
+                    <h3>📋 TODAY'S HISTORY</h3>
+                    <div class="history-list" id="historyList">
+                        <div class="empty-history">✨ Complete a focus session to see it here</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden audio for voice messages -->
+    <audio id="sessionCompleteSound" preload="auto">
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
